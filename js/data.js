@@ -1,16 +1,16 @@
-/**
- * data.js — dane rozkładu jazdy, oddzielone od logiki interfejsu.
+﻿/**
+ * data.js â€” dane rozkładu jazdy, oddzielone od logiki interfejsu.
  *
  * Jak działa null: każda komórka w tablicy `times` to albo "HH:MM",
  * albo null. null oznacza dwie rzeczy z oryginalnego PDF-u, których
  * pasażer i tak nie odróżni: (a) kurs w ogóle nie obsługuje tego
  * przystanku (w PDF: "-"), (b) przystanek jest oficjalnie "pominięty
- * w obsłudze" dla tego kursu — czyli przekreślony w PDF zgodnie
+ * w obsłudze" dla tego kursu â€” czyli przekreślony w PDF zgodnie
  * z legendą na str. 14 (autobus tamtędy przejeżdża, ale nie
  * zatrzymuje się dla pasażerów). W obu przypadkach: nie da się stąd
  * odjechać tym kursem.
  *
- * hasSchedule: false → linia jest już na liście (Etap 2), ale jej
+ * hasSchedule: false â†’ linia jest już na liście (Etap 2), ale jej
  * godziny nie zostały jeszcze wpisane (Etap 4). Interfejs pokazuje
  * to jawnie zamiast zmyślać godziny.
  */
@@ -21,12 +21,12 @@ window.APP_DATA = {
     validFrom: "2026-07-30",
     preparedAt: "2026-09-16",
     note:
-      "Etap 4/6: wszystkie 18 linii wpisane i zweryfikowane z PDF-u źródłowego, łącznie z przystankami pominiętymi w obsłudze.",
+      "Etap 4/6: wszystkie 18 linii wpisane i zweryfikowane z PDF-u Ĺşródłowego, łącznie z przystankami pominiętymi w obsłudze.",
   },
 
   lines: [
     // ---------------------------------------------------------------
-    // LINIA 1 — w pełni zweryfikowana, wraz z przystankami pominiętymi
+    // LINIA 1 â€” w pełni zweryfikowana, wraz z przystankami pominiętymi
     // w obsłudze (patrz legenda PDF, str. 14).
     // ---------------------------------------------------------------
     {
@@ -36,7 +36,7 @@ window.APP_DATA = {
       directions: [
         {
           id: "1-a",
-          label: "Farna → Piłsudskiego",
+          label: "Farna â†’ Piłsudskiego",
           stops: [
             { name: "Farna" },
             { name: "Stary Rynek" },
@@ -80,7 +80,7 @@ window.APP_DATA = {
     },
 
     // ---------------------------------------------------------------
-    // LINIA 2 — w pełni zweryfikowana.
+    // LINIA 2 â€” w pełni zweryfikowana.
     // ---------------------------------------------------------------
     {
       id: "2",
@@ -89,7 +89,7 @@ window.APP_DATA = {
       directions: [
         {
           id: "2-a",
-          label: "Piłsudskiego → Farna",
+          label: "Piłsudskiego â†’ Farna",
           stops: [
             { name: "Piłsudskiego" },
             { name: "Mickiewicza I" },
@@ -112,7 +112,7 @@ window.APP_DATA = {
           schedules: {
             workday: {
               trips: [
-                { times: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null] },
+                { times: [null, "07:42", "07:43", "07:45", "07:47", "07:49", "07:50", "07:52", "07:54", "07:58", "08:00", "08:02", "08:05", "08:06", "08:07", "08:10", null] },
                 { times: [null, "09:27", "09:28", "09:30", "09:32", "09:34", "09:35", "09:37", "09:38", "09:42", "09:44", "09:46", "09:49", "09:50", "09:51", "09:54", null] },
                 { times: [null, "13:37", "13:38", "13:40", "13:42", "13:44", "13:45", "13:47", "13:49", "13:53", "13:55", "13:57", "14:00", "14:01", "14:02", "14:05", "14:08"] },
                 { times: [null, "16:57", "16:58", "17:00", "17:02", "17:04", "17:05", "17:07", null, "17:08", "17:10", "17:12", "17:15", "17:16", "17:17", "17:20", null] },
@@ -130,7 +130,7 @@ window.APP_DATA = {
     },
 
     // ---------------------------------------------------------------
-    // LINIE 3–18 — na liście, dane do uzupełnienia w Etapie 4.
+    // LINIE 3â€“18 â€” na liście, dane do uzupełnienia w Etapie 4.
     // ---------------------------------------------------------------
     {
       id: "3",
@@ -142,7 +142,7 @@ window.APP_DATA = {
           label: "Piłsudskiego, przez Dobczyn",
           stops: [
             { name: "Piłsudskiego" }, { name: "Mickiewicza I" }, { name: "Mickiewicza II" }, { name: "Mickiewicza III" },
-            { name: "Gostyńska I" }, { name: "Gostyńska II" }, { name: "Rolna" }, { name: "Sosnowiec" }, { name: "Łęg" },
+            { name: "Gostyńska I" }, { name: "Gostyńska II" }, { name: "Rolna" }, { name: "Sosnowiec" }, { name: "Ĺęg" },
             { name: "Bystrzek" }, { name: "Olsza I" }, { name: "Olsza II" }, { name: "Chrząstowo I nż." },
             { name: "Chrząstowo II nż." }, { name: "Chrząstowo III nż." }, { name: "Dobczyn I nż." }, { name: "Dobczyn" },
             { name: "Chrząstowo III nż." }, { name: "Chrząstowo II nż." }, { name: "Chrząstowo I nż." }, { name: "Pysząca I" },
@@ -168,12 +168,12 @@ window.APP_DATA = {
       directions: [
         {
           id: "4-a",
-          label: "Stary Rynek → Piłsudskiego, przez Dobczyn",
+          label: "Stary Rynek â†’ Piłsudskiego, przez Dobczyn",
           stops: [
             { name: "Stary Rynek" }, { name: "Piłsudskiego" }, { name: "Mickiewicza I" }, { name: "Mickiewicza II" },
             { name: "Mickiewicza III" }, { name: "Gostyńska I" }, { name: "Staszica I" }, { name: "Grzymysław III" },
             { name: "Grzymysław II" }, { name: "Grzymysław I" }, { name: "Borgowo" }, { name: "Pysząca II" },
-            { name: "Pysząca I" }, { name: "Pysząca III" }, { name: "Sosnowiec" }, { name: "Łęg" }, { name: "Bystrzek" },
+            { name: "Pysząca I" }, { name: "Pysząca III" }, { name: "Sosnowiec" }, { name: "Ĺęg" }, { name: "Bystrzek" },
             { name: "Olsza I" }, { name: "Olsza II" }, { name: "Chrząstowo I nż." }, { name: "Chrząstowo II nż." },
             { name: "Chrząstowo III nż." }, { name: "Dobczyn I nż." }, { name: "Dobczyn" }, { name: "Chrząstowo III nż." },
             { name: "Chrząstowo II nż." }, { name: "Chrząstowo I nż." }, { name: "Rolna" }, { name: "Grzymysław nż." },
@@ -251,7 +251,7 @@ window.APP_DATA = {
           label: "Piłsudskiego, przez Zbrudzewo i Mechlin",
           stops: [
             { name: "Piłsudskiego" }, { name: "Zbrudzewo" }, { name: "Niesłabin ul. Osiedlowa nż." }, { name: "Niesłabin" },
-            { name: "Orkowo" }, { name: "Czmoniec ul. Goździkowa" }, { name: "Czmoń ul. Strażacka" }, { name: "Kaleje" },
+            { name: "Orkowo" }, { name: "Czmoniec ul. GoĹşdzikowa" }, { name: "Czmoń ul. Strażacka" }, { name: "Kaleje" },
             { name: "Luciny II nż." }, { name: "Luciny I" }, { name: "Dąbrowa I" }, { name: "Dąbrowa" }, { name: "Mechlin" },
             { name: "Mechlin ul. Śremska nż." }, { name: "Mechlin I nż." }, { name: "Piłsudskiego" }, { name: "Kilińskiego I" },
             { name: "Sikorskiego" }, { name: "Al. Solidarności I" }, { name: "Al. Solidarności II" }, { name: "Kilińskiego III" },
@@ -268,12 +268,12 @@ window.APP_DATA = {
         },
         {
           id: "6-b",
-          label: "Farna → Piłsudskiego, przez Mechlin i Zbrudzewo",
+          label: "Farna â†’ Piłsudskiego, przez Mechlin i Zbrudzewo",
           stops: [
             { name: "Farna" }, { name: "Piłsudskiego" }, { name: "Mechlin I nż." }, { name: "Mechlin nż." },
             { name: "Mechlin ul. Śremska nż." }, { name: "Mechlin" }, { name: "Dąbrowa" }, { name: "Dąbrowa I" },
             { name: "Luciny I" }, { name: "Luciny II nż." }, { name: "Kaleje" }, { name: "Czmoń ul. Strażacka" },
-            { name: "Czmoniec ul. Goździkowa" }, { name: "Orkowo I" }, { name: "Niesłabin" }, { name: "Niesłabin ul. Osiedlowa nż." },
+            { name: "Czmoniec ul. GoĹşdzikowa" }, { name: "Orkowo I" }, { name: "Niesłabin" }, { name: "Niesłabin ul. Osiedlowa nż." },
             { name: "Zbrudzewo" }, { name: "Piłsudskiego" }, { name: "Kilińskiego I" }, { name: "Sikorskiego" },
             { name: "Al. Solidarności I" }, { name: "Al. Solidarności II" }, { name: "Kilińskiego III" }, { name: "Chłapowskiego I" },
             { name: "Chłapowskiego II" }, { name: "Staszica I" }, { name: "Gostyńska I" }, { name: "Mickiewicza III" },
@@ -304,7 +304,7 @@ window.APP_DATA = {
             { name: "Mickiewicza III" }, { name: "Gostyńska I" }, { name: "Staszica II nż." }, { name: "Staszica I" },
             { name: "Chłapowskiego II" }, { name: "Chłapowskiego I" }, { name: "Kilińskiego III" }, { name: "Kilińskiego II" },
             { name: "Kilińskiego I" }, { name: "Sikorskiego" }, { name: "Al. Solidarności I" }, { name: "Chełmońskiego nż." },
-            { name: "Chełmońskiego I nż." }, { name: "Malczewskiego I" }, { name: "Malczewskiego II" },
+            { name: "Chełmońskiego I nż." }, { name: "Malczewskiego I" }, { name: "Malczewskiego II", layoverAfter: true },
             { name: "Malczewskiego II" }, { name: "Malczewskiego I" }, { name: "Chełmońskiego nż." }, { name: "Al. Solidarności I" },
             { name: "Sikorskiego" }, { name: "Kilińskiego II" }, { name: "Kilińskiego III" }, { name: "Chłapowskiego I" },
             { name: "Chłapowskiego II" }, { name: "Staszica I" }, { name: "Gostyńska I" }, { name: "Mickiewicza III" },
@@ -316,7 +316,7 @@ window.APP_DATA = {
                 { times: [null, null, "08:02", "08:03", "08:05", "08:07", "08:09", "08:10", "08:12", "08:14", "08:16", "08:18", "08:19", "08:21", "08:23", "08:24", "08:25", "08:26", "08:27", "09:00", "09:01", "09:03", "09:05", "09:07", "09:09", "09:11", "09:13", "09:15", "09:17", "09:19", "09:21", "09:22", "09:23", "09:24"] },
                 { times: [null, null, "10:02", "10:03", "10:05", "10:07", "10:09", "10:10", "10:12", "10:14", "10:16", "10:18", "10:19", "10:21", "10:23", "10:24", "10:25", "10:26", "10:27", "11:20", "11:21", "11:22", "11:23", "11:25", "11:28", "11:30", "11:32", "11:34", "11:36", "11:38", "11:40", "11:41", "11:42", "11:44"] },
                 { times: [null, null, "15:19", "15:20", "15:22", "15:24", "15:26", "15:27", "15:29", "15:31", "15:33", "15:35", "15:36", "15:38", "15:40", "15:41", "15:42", "15:43", "15:44", "16:22", "16:23", "16:24", "16:25", "16:27", "16:30", "16:32", "16:34", "16:36", "16:38", "16:40", "16:42", "16:43", "16:44", null] },
-                { times: [null, null, "17:02", "17:03", "17:05", "17:07", "17:09", "17:10", "17:12", "17:14", "17:16", "17:18", "17:19", "17:21", "17:23", "17:24", "17:25", "17:26", "17:27", "18:00", "18:01", "18:02", "18:03", "18:05", "18:08", "18:10", "18:12", "18:14", "18:16", "18:18", "18:20", "18:21", "18:22", null], note: "Kurs sezonowy: 1 maja – 31 października" },
+                { times: [null, null, "17:02", "17:03", "17:05", "17:07", "17:09", "17:10", "17:12", "17:14", "17:16", "17:18", "17:19", "17:21", "17:23", "17:24", "17:25", "17:26", "17:27", "18:00", "18:01", "18:02", "18:03", "18:05", "18:08", "18:10", "18:12", "18:14", "18:16", "18:18", "18:20", "18:21", "18:22", null], note: "Kurs sezonowy: 1 maja â€“ 31 paĹşdziernika" },
               ],
             },
             saturday: {
@@ -342,7 +342,7 @@ window.APP_DATA = {
             { name: "Śrem Gostyńska I" }, { name: "Śrem Staszica II nż." }, { name: "Śrem Staszica I" }, { name: "Śrem Chłapowskiego II" },
             { name: "Śrem Chłapowskiego I" }, { name: "Śrem Kilińskiego III" }, { name: "Śrem Al. Solidarności II" }, { name: "Śrem Al. Solidarności I" },
             { name: "Śrem Sikorskiego nż." }, { name: "Psarskie I" }, { name: "Psarskie III" }, { name: "Psarskie Al.Platanowa nż." },
-            { name: "Psarskie IV DPS" }, { name: "Góra" }, { name: "Góra Huby nż." }, { name: "Jaszkowo" },
+            { name: "Psarskie IV DPS" }, { name: "Góra" }, { name: "Góra Huby nż." }, { name: "Jaszkowo", layoverAfter: true },
             { name: "Jaszkowo" }, { name: "Góra Huby nż." }, { name: "Góra" }, { name: "Psarskie V nż." },
             { name: "Psarskie IV DPS" }, { name: "Psarskie Al.Platanowa nż." }, { name: "Psarskie III" }, { name: "Psarskie I" },
             { name: "Śrem Al. Solidarności I" }, { name: "Śrem Al. Solidarności II" }, { name: "Śrem Kilińskiego III" }, { name: "Śrem Chłapowskiego I" },
@@ -371,7 +371,7 @@ window.APP_DATA = {
       directions: [
         {
           id: "9-a",
-          label: "Farna → Stary Rynek, przez Niesłabin",
+          label: "Farna â†’ Stary Rynek, przez Niesłabin",
           stops: [
             { name: "Farna" }, { name: "Piłsudskiego" }, { name: "Zbrudzewo" }, { name: "Niesłabin ul. Osiedlowa nż." },
             { name: "Niesłabin" }, { name: "Orkowo" }, { name: "Niesłabin" }, { name: "Niesłabin ul. Osiedlowa nż." },
@@ -398,7 +398,7 @@ window.APP_DATA = {
       directions: [
         {
           id: "10-a",
-          label: "Piłsudskiego → Farna, przez Błociszewo",
+          label: "Piłsudskiego â†’ Farna, przez Błociszewo",
           stops: [
             { name: "Piłsudskiego" }, { name: "Kilińskiego I" }, { name: "Sikorskiego" }, { name: "Al. Solidarności I" },
             { name: "Chełmońskiego nż." }, { name: "Chełmońskiego I nż." }, { name: "Nochowo ul. Podgaje nż." }, { name: "Gaj nż." },
@@ -418,7 +418,7 @@ window.APP_DATA = {
         },
         {
           id: "10-b",
-          label: "Farna → Piłsudskiego, przez Psarskie",
+          label: "Farna â†’ Piłsudskiego, przez Psarskie",
           stops: [
             { name: "Farna" }, { name: "Piłsudskiego" }, { name: "Kilińskiego I" }, { name: "Sikorskiego" },
             { name: "Sikorskiego nż." }, { name: "Psarskie I" }, { name: "Psarskie III" }, { name: "Psarskie IV" },
@@ -565,7 +565,7 @@ window.APP_DATA = {
       directions: [
         {
           id: "13-a",
-          label: "Piłsudskiego → Kilińskiego III, przez Mechlin",
+          label: "Piłsudskiego â†’ Kilińskiego III, przez Mechlin",
           stops: [
             { name: "Piłsudskiego" }, { name: "Mickiewicza I" }, { name: "Mickiewicza II" }, { name: "Mickiewicza III" },
             { name: "Gostyńska I" }, { name: "Staszica II nż." }, { name: "Staszica I" }, { name: "Chłapowskiego II" },
@@ -586,7 +586,7 @@ window.APP_DATA = {
         },
         {
           id: "13-b",
-          label: "Kilińskiego III → Piłsudskiego, przez Mechlin",
+          label: "Kilińskiego III â†’ Piłsudskiego, przez Mechlin",
           stops: [
             { name: "Kilińskiego III" }, { name: "Kilińskiego II" }, { name: "Kilińskiego I" }, { name: "Stary Rynek" },
             { name: "Piłsudskiego" }, { name: "Mechlin I nż." }, { name: "Zbrudzewo ul. Średzka I" }, { name: "Mechlin Leopol" },
@@ -634,7 +634,7 @@ window.APP_DATA = {
         },
         {
           id: "14-b",
-          label: "Farna / Stary Rynek → Piłsudskiego, przez Grzymysław (popołudnie)",
+          label: "Farna / Stary Rynek â†’ Piłsudskiego, przez Grzymysław (popołudnie)",
           stops: [
             { name: "Farna" }, { name: "Stary Rynek" }, { name: "Piłsudskiego" }, { name: "Kilińskiego I" },
             { name: "Sikorskiego" }, { name: "Al. Solidarności I" }, { name: "Al. Solidarności II" }, { name: "Kilińskiego III" },
@@ -664,11 +664,11 @@ window.APP_DATA = {
       directions: [
         {
           id: "15-a",
-          label: "Farna → Piłsudskiego, przez Nochowo (kurs okrężny)",
+          label: "Farna â†’ Piłsudskiego, przez Nochowo (kurs okrężny)",
           stops: [
             { name: "Farna" }, { name: "Piłsudskiego" }, { name: "Kilińskiego I" }, { name: "Sikorskiego" },
             { name: "Al. Solidarności I" }, { name: "Al. Solidarności II" }, { name: "Grunwaldzka" }, { name: "Chłapowskiego II" },
-            { name: "Chłapowskiego I" }, { name: "Nochowo III nż." }, { name: "Nochowo II" }, { name: "Nochowo ul. Jesienna" },
+            { name: "Chłapowskiego I" }, { name: "Nochowo III nż." }, { name: "Nochowo II" }, { name: "Nochowo ul. Jesienna", layoverAfter: true },
             { name: "Nochowo ul. Jesienna" }, { name: "Nochowo II" }, { name: "Nochowo III nż." }, { name: "Chłapowskiego II" },
             { name: "Chłapowskiego I" }, { name: "Kilińskiego III" }, { name: "Grunwaldzka" }, { name: "Wojska Polskiego" },
             { name: "Kilińskiego II" }, { name: "Al. Solidarności II" }, { name: "Al. Solidarności I" }, { name: "Sikorskiego" },
@@ -697,9 +697,9 @@ window.APP_DATA = {
           stops: [
             { name: "Piłsudskiego" }, { name: "Kilińskiego I" }, { name: "Kilińskiego II" }, { name: "Kilińskiego III" },
             { name: "Nochowo III nż." }, { name: "Nochowo II" }, { name: "Wyrzeka" }, { name: "Dalewo I" },
-            { name: "Dalewo II" }, { name: "Łuszkowo nż." }, { name: "Jerka Rondo" }, { name: "Jerka os.Brzozowiec nż." },
+            { name: "Dalewo II" }, { name: "Ĺuszkowo nż." }, { name: "Jerka Rondo" }, { name: "Jerka os.Brzozowiec nż." },
             { name: "Krzywiń Kościańska nż." }, { name: "Krzywiń Rynek" }, { name: "Krzywiń Kościańska nż." }, { name: "Jerka os.Brzozowiec nż." },
-            { name: "Jerka Rondo" }, { name: "Łuszkowo nż." }, { name: "Dalewo II" }, { name: "Dalewo I" },
+            { name: "Jerka Rondo" }, { name: "Ĺuszkowo nż." }, { name: "Dalewo II" }, { name: "Dalewo I" },
             { name: "Wyrzeka" }, { name: "Nochowo II" }, { name: "Nochowo III nż." }, { name: "Kilińskiego III" },
             { name: "Grunwaldzka" }, { name: "Wojska Polskiego" }, { name: "Kilińskiego II" }, { name: "Kilińskiego I" },
             { name: "Piłsudskiego" },
@@ -724,13 +724,13 @@ window.APP_DATA = {
       directions: [
         {
           id: "17-a",
-          label: "Piłsudskiego → Farna, przez Zaniemyśl (kurs okrężny)",
+          label: "Piłsudskiego â†’ Farna, przez Zaniemyśl (kurs okrężny)",
           stops: [
             { name: "Piłsudskiego" }, { name: "Kilińskiego I" }, { name: "Sikorskiego" }, { name: "Al. Solidarności I" },
             { name: "Al. Solidarności II" }, { name: "Kilińskiego III" }, { name: "Chłapowskiego I" }, { name: "Chłapowskiego II" },
             { name: "Staszica I" }, { name: "Gostyńska I" }, { name: "Mickiewicza III" }, { name: "Mickiewicza II" },
             { name: "Mickiewicza I" }, { name: "Piłsudskiego" }, { name: "Mechlin I nż." }, { name: "Luciny Skrzyż." },
-            { name: "Polesie" }, { name: "Zaniemyśl Rynek" }, { name: "Zaniemyśl Szkoła" }, { name: "Zaniemyśl Szkoła" },
+            { name: "Polesie" }, { name: "Zaniemyśl Rynek" }, { name: "Zaniemyśl Szkoła", layoverAfter: true }, { name: "Zaniemyśl Szkoła" },
             { name: "Zaniemyśl Rynek" }, { name: "Polesie" }, { name: "Luciny Skrzyż." }, { name: "Zbrudzewo ul. Średzka nż." },
             { name: "Mechlin I nż." }, { name: "Piłsudskiego" }, { name: "Mickiewicza I" }, { name: "Mickiewicza II" },
             { name: "Mickiewicza III" }, { name: "Gostyńska I" }, { name: "Staszica II nż." }, { name: "Staszica I" },
@@ -763,7 +763,7 @@ window.APP_DATA = {
             { name: "Piłsudskiego" }, { name: "Kilińskiego I" }, { name: "Kilińskiego II" }, { name: "Grunwaldzka" },
             { name: "Staszica I" }, { name: "Gostyńska I" }, { name: "Mickiewicza III" }, { name: "Mickiewicza II" },
             { name: "Mickiewicza I" }, { name: "Piłsudskiego" }, { name: "Mechlin I nż." }, { name: "Zbrudzewo ul. Ametystowa nż." },
-            { name: "Zbrudzewo ul. Brylantowa I" }, { name: "Zbrudzewo ul. Brylantowa II" }, { name: "Zbrudzewo ul. Brylantowa II" }, { name: "Zbrudzewo ul. Brylantowa I" },
+            { name: "Zbrudzewo ul. Brylantowa I" }, { name: "Zbrudzewo ul. Brylantowa II", layoverAfter: true }, { name: "Zbrudzewo ul. Brylantowa II" }, { name: "Zbrudzewo ul. Brylantowa I" },
             { name: "Zbrudzewo ul. Ametystowa nż." }, { name: "Mechlin I nż." }, { name: "Piłsudskiego" }, { name: "Kilińskiego I" },
             { name: "Kilińskiego II" }, { name: "Grunwaldzka" }, { name: "Staszica I" },
           ],
@@ -781,3 +781,4 @@ window.APP_DATA = {
     },
   ],
 };
+

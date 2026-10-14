@@ -573,7 +573,7 @@
                     const cls = [tripIdx === nextTripIdx ? "is-next" : "", isPast ? "is-past" : "", t === null ? "is-empty" : ""].filter(Boolean).join(" ");
                     return `<td class="${cls}">${t || "–"}</td>`;
                   }).join("")}
-                </tr>`;
+                </tr>${stop.layoverAfter ? `<tr class="layover-row"><td colspan="${schedule.trips.length + 1}">POSTÓJ</td></tr>` : ""}`;
               }).join("")}
             </tbody>
           </table>

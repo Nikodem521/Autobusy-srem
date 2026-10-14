@@ -9,7 +9,7 @@
  * i wyczyszczonym cache aplikacja poprosi o ponowne wczytanie online.
  */
 
-const CACHE_NAME = "srem-bus-v1";
+const CACHE_NAME = "srem-bus-v3";
 const APP_SHELL = [
   "./",
   "./index.html",
