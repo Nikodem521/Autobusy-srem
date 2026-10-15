@@ -34,9 +34,45 @@ const Storage = (() => {
     }
   }
 
+  // Napraw polskie znaki zapisane wcześniej po błędnym odczycie UTF-8.
+  // Przykład: „PiĹ‚sudskiego” → „Piłsudskiego”.
+  function fixPolishEncoding(value) {
+    if (typeof value !== "string") return value;
+    const replacements = [
+      ["Ĺ‚", "ł"], ["Ĺ", "Ł"], ["Ĺ„", "ń"], ["Ĺƒ", "Ń"],
+      ["Ĺ›", "ś"], ["Ĺš", "Ś"], ["Ĺş", "ź"], ["Ĺą", "Ź"],
+      ["ĹĽ", "ż"], ["Ĺť", "Ż"], ["Ä…", "ą"], ["Ä„", "Ą"],
+      ["Ä‡", "ć"], ["Ä†", "Ć"], ["Ä™", "ę"], ["Ä˜", "Ę"],
+      ["Ăł", "ó"], ["Ă“", "Ó"], ["Å‚", "ł"], ["Å", "Ł"],
+      ["Å›", "ś"], ["Åš", "Ś"], ["Åº", "ź"], ["Å¹", "Ź"],
+      ["Å¼", "ż"], ["Å»", "Ż"], ["Å„", "ń"], ["Åƒ", "Ń"],
+    ];
+    return replacements.reduce((text, [broken, corrected]) => text.split(broken).join(corrected), value);
+  }
+
+  function normalizeStringList(key) {
+    const values = safeGet(key, []);
+    if (!Array.isArray(values)) return [];
+    const fixed = values.map(fixPolishEncoding);
+    if (fixed.some((value, index) => value !== values[index])) safeSet(key, fixed);
+    return fixed;
+  }
+
   // ---- Ulubione trasy (Skąd → Dokąd) ----
   function getFavoriteRoutes() {
-    return safeGet(KEYS.favoriteRoutes, []);
+    const routes = safeGet(KEYS.favoriteRoutes, []);
+    if (!Array.isArray(routes)) return [];
+    let changed = false;
+    const fixed = routes.map((route) => {
+      if (!route || typeof route !== "object") return route;
+      const from = fixPolishEncoding(route.from);
+      const to = fixPolishEncoding(route.to);
+      if (from === route.from && to === route.to) return route;
+      changed = true;
+      return { ...route, id: `${from}|${to}`, from, to };
+    });
+    if (changed) safeSet(KEYS.favoriteRoutes, fixed);
+    return fixed;
   }
 
   function toggleFavoriteRoute(from, to) {
@@ -55,7 +91,7 @@ const Storage = (() => {
   // ---- Ulubione przystanki (lista nazw) ----
 
   function getFavorites() {
-    return safeGet(KEYS.favorites, []);
+    return normalizeStringList(KEYS.favorites);
   }
 
   function isFavorite(stopName) {
@@ -76,7 +112,7 @@ const Storage = (() => {
 
   // ---- Ostatnio używane przystanki ----
   function getRecents() {
-    return safeGet(KEYS.recents, []);
+    return normalizeStringList(KEYS.recents);
   }
 
   function pushRecent(stopName) {

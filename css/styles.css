@@ -1,32 +1,38 @@
-/* =========================================================================
-   Śremskie autobusy — arkusz stylów
-   Motyw: "Liquid Glass" — miękkie, kolorowe rozmyte tło + szklane, półprzezroczyste
-   panele z blurem (jak natywne UI iOS 26/27). Jeden mocny akcent (indygo)
-   zarezerwowany dla najbliższego odjazdu/połączenia i aktywnych wyborów.
-   ========================================================================= */
-
+/* Paleta Autobusy Śrem */
 :root {
-  --bg-base: #f8f9ff;
-  --blob-a: rgba(99, 102, 241, 0.35);
-  --blob-b: rgba(45, 212, 191, 0.25);
-  --blob-c: rgba(244, 63, 94, 0.15);
+  --color-primary: #142B46;
+  --color-accent: #0D9488;
+  --color-accent-hover: #0B7F75;
+  --color-accent-soft: rgba(13, 148, 136, 0.12);
+  --color-background: #F4F7FB;
+  --color-surface: #FFFFFF;
+  --color-text: #142B46;
+  --color-muted: #64748B;
+  --color-success: #16A34A;
+  --color-success-ink: #14532D;
+  --color-success-soft: #ECFDF3;
+  --color-danger: #B42318;
+  --color-danger-soft: #FEF3F2;
+  --color-border: #DCE3EC;
+  --color-sunken: #EEF3F8;
+  --color-shadow: rgba(20, 43, 70, 0.08);
 
-  --ink: #0f172a;
-  --ink-soft: #64748b;
-  --hairline: rgba(15, 23, 42, 0.08);
-
-  --accent: #6366f1;
-  --accent-ink: #ffffff;
-  --accent-2: #2dd4bf;
-  --danger: #ef4444;
-
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-bg-strong: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.7);
-  --glass-inset: rgba(255, 255, 255, 0.6);
-  --glass-shine: linear-gradient(160deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 45%);
-  --glass-shadow: 0 20px 50px -12px rgba(99, 102, 241, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05);
-  --sunken: rgba(15, 23, 42, 0.05);
+  /* Aliasy utrzymują kompatybilność z istniejącymi komponentami. */
+  --bg-base: var(--color-background);
+  --ink: var(--color-text);
+  --ink-soft: var(--color-muted);
+  --hairline: var(--color-border);
+  --accent: var(--color-accent);
+  --accent-ink: #FFFFFF;
+  --accent-2: var(--color-accent-hover);
+  --danger: var(--color-danger);
+  --glass-bg: var(--color-surface);
+  --glass-bg-strong: var(--color-surface);
+  --glass-border: var(--color-border);
+  --glass-inset: transparent;
+  --glass-shine: none;
+  --glass-shadow: 0 3px 12px var(--color-shadow);
+  --sunken: var(--color-sunken);
 
   --radius: 24px;
   --radius-sm: 16px;
@@ -38,58 +44,45 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --scheme-dark: 1; }
-}
-:root[data-theme="dark"] { --scheme-dark: 1; }
-
-@media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg-base: #020617;
-    --blob-a: rgba(99, 102, 241, 0.25);
-    --blob-b: rgba(45, 212, 191, 0.15);
-    --blob-c: rgba(244, 63, 94, 0.10);
-
-    --ink: #f1f5f9;
-    --ink-soft: #94a3b8;
-    --hairline: rgba(255, 255, 255, 0.10);
-
-    --accent: #818cf8;
-    --accent-ink: #020617;
-    --accent-2: #2dd4bf;
-    --danger: #f87171;
-
-    --glass-bg: rgba(15, 23, 42, 0.6);
-    --glass-bg-strong: rgba(30, 41, 59, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.12);
-    --glass-inset: rgba(255, 255, 255, 0.05);
-    --glass-shine: linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 45%);
-    --glass-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
-    --sunken: rgba(255, 255, 255, 0.05);
+    --color-background: #0B1C30;
+    --color-surface: #142B46;
+    --color-text: #F4F7FB;
+    --color-muted: #B7C4D3;
+    --color-border: #334A63;
+    --color-sunken: #1D3854;
+    --color-success: #4ADE80;
+    --color-success-ink: #DCFCE7;
+    --color-success-soft: #123A2A;
+    --color-danger: #FDA29B;
+    --color-danger-soft: #4A211F;
+    --color-accent: #2CC4B5;
+    --color-accent-hover: #44D4C6;
+    --color-accent-soft: rgba(44, 196, 181, 0.18);
+    --color-shadow: rgba(0, 0, 0, 0.2);
+    --glass-inset: transparent;
+    --glass-shine: none;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg-base: #05050a;
-  --blob-a: rgba(120, 100, 255, 0.46);
-  --blob-b: rgba(24, 186, 209, 0.30);
-  --blob-c: rgba(219, 57, 138, 0.16);
-
-  --ink: #f2f2f7;
-  --ink-soft: #98989f;
-  --hairline: rgba(255, 255, 255, 0.14);
-
-  --accent: #8f7cff;
-  --accent-ink: #0b0b14;
-  --accent-2: #34d3e0;
-  --danger: #ff6961;
-
-  --glass-bg: rgba(28, 28, 38, 0.5);
-  --glass-bg-strong: rgba(38, 38, 50, 0.74);
-  --glass-border: rgba(255, 255, 255, 0.16);
-  --glass-inset: rgba(255, 255, 255, 0.09);
-  --glass-shine: linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 45%);
-  --glass-shadow: 0 16px 44px -10px rgba(0, 0, 0, 0.55), 0 2px 10px rgba(0, 0, 0, 0.3);
-  --sunken: rgba(255, 255, 255, 0.07);
+  --color-background: #0B1C30;
+  --color-surface: #142B46;
+  --color-text: #F4F7FB;
+  --color-muted: #B7C4D3;
+  --color-border: #334A63;
+  --color-sunken: #1D3854;
+  --color-success: #4ADE80;
+  --color-success-ink: #DCFCE7;
+  --color-success-soft: #123A2A;
+  --color-danger: #FDA29B;
+  --color-danger-soft: #4A211F;
+  --color-accent: #2CC4B5;
+  --color-accent-hover: #44D4C6;
+  --color-accent-soft: rgba(44, 196, 181, 0.18);
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  --glass-inset: transparent;
+  --glass-shine: none;
   color-scheme: dark;
 }
 
@@ -106,8 +99,9 @@ html, body {
 
 body {
   position: relative;
+
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
@@ -115,47 +109,6 @@ body {
   min-height: 100dvh;
   padding-bottom: calc(96px + var(--safe-bottom));
   isolation: isolate;
-}
-
-/* Miękkie, kolorowe plamy w tle — to na nich "szkło" faktycznie robi za szkło.
-   Stałe (position: fixed), więc nie przewijają się razem z treścią. Bardzo
-   powolny dryf dla wrażenia "żywego", płynnego tła. */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  z-index: -1;
-  border-radius: 50%;
-  filter: blur(70px);
-  pointer-events: none;
-}
-body::before {
-  width: 72vw;
-  height: 72vw;
-  top: -22vw;
-  right: -24vw;
-  background: radial-gradient(circle at 30% 30%, var(--blob-a), transparent 70%);
-}
-body::after {
-  width: 82vw;
-  height: 82vw;
-  bottom: -32vw;
-  left: -26vw;
-  background:
-    radial-gradient(circle at 60% 40%, var(--blob-b), transparent 65%),
-    radial-gradient(circle at 30% 70%, var(--blob-c), transparent 70%);
-}
-@media (prefers-reduced-motion: no-preference) {
-  body::before { animation: driftA 46s ease-in-out infinite; }
-  body::after { animation: driftB 54s ease-in-out infinite; }
-}
-@keyframes driftA {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-5%, 4%) scale(1.08); }
-}
-@keyframes driftB {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(4%, -5%) scale(1.06); }
 }
 
 h1, h2, p { margin: 0; }
@@ -171,7 +124,7 @@ button {
 
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
@@ -198,8 +151,8 @@ input:focus-visible {
 /* ---------- Szkło: bazowy materiał ---------- */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(22px) saturate(180%);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-inset);
 }
@@ -214,10 +167,11 @@ input:focus-visible {
   position: sticky;
   top: 0;
   z-index: 6;
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--glass-border);
+  background: var(--color-primary);
+  color: #FFFFFF;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid var(--color-primary);
   margin: 0 calc(-1 * max(16px, var(--safe-right))) 0 calc(-1 * max(16px, var(--safe-left)));
   padding-left: max(16px, var(--safe-left));
   padding-right: max(16px, var(--safe-right));
@@ -229,6 +183,12 @@ input:focus-visible {
   text-align: center;
   letter-spacing: -0.01em;
 }
+.topbar .icon-btn {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+.topbar .icon-btn:active { background: rgba(255, 255, 255, 0.2); }
 .topbar--brand h1 {
   text-align: left;
   font-size: 28px;
@@ -250,6 +210,7 @@ input:focus-visible {
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
 .icon-btn:active { background: var(--sunken); transform: scale(0.9); }
+.icon-btn:hover, .btn-secondary:hover { border-color: var(--color-accent); }
 .fav-btn.is-fav { color: var(--danger); }
 .fav-btn.pop { animation: heartPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
 @keyframes heartPop {
@@ -285,6 +246,10 @@ input:focus-visible {
   z-index: 1;
 }
 #from-search::placeholder, #to-search::placeholder, #journey-input::placeholder { color: var(--ink-soft); }
+.search-wrap:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
 /* Własny przycisk czyszczenia — input ma type="text", więc nie ma już
    natywnego "x" od Safari (bywał niezauważalny na szklanym tle). */
 .clear-btn {
@@ -378,6 +343,7 @@ input:focus-visible {
 }
 .list-row:last-child { border-bottom: none; }
 .list-row:active { background: var(--sunken); transform: scale(0.985); }
+.list-row:hover { background: var(--color-accent-soft); }
 .list-row--stack { flex-direction: column; align-items: stretch; gap: 6px; }
 .list-row--link { border-radius: var(--radius); }
 .list-row-top { display: flex; align-items: center; justify-content: space-between; width: 100%; }
@@ -407,7 +373,7 @@ input:focus-visible {
   color: var(--ink);
 }
 .chip--past { color: var(--ink-soft); opacity: 0.55; }
-.chip--next { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.chip--next { background: var(--color-accent-hover); color: #FFFFFF; font-weight: 700; }
 
 /* ---------- Hero: najbliższy odjazd / połączenie ---------- */
 .hero-card {
@@ -416,13 +382,13 @@ input:focus-visible {
   overflow: hidden;
   width: 100%;
   text-align: left;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: var(--color-primary);
   color: var(--accent-ink);
   border-radius: var(--radius);
   padding: 18px 20px;
   margin-bottom: 18px;
-  box-shadow: 0 16px 40px -8px rgba(91, 79, 232, 0.45), 0 2px 10px rgba(91, 79, 232, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 18px var(--color-shadow);
+  border: 1px solid var(--color-primary);
   transition: transform 0.15s ease;
   animation: heroEnter 0.55s cubic-bezier(0.3, 1.4, 0.5, 1);
 }
@@ -430,29 +396,6 @@ input:focus-visible {
 @keyframes heroEnter {
   from { opacity: 0; transform: scale(0.93) translateY(8px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
-}
-.hero-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 50%);
-}
-.hero-card::after {
-  content: "";
-  position: absolute;
-  top: -60%;
-  left: -60%;
-  width: 40%;
-  height: 220%;
-  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
-  transform: rotate(20deg);
-  pointer-events: none;
-  animation: heroShine 1.3s ease-out 0.25s backwards;
-}
-@keyframes heroShine {
-  from { left: -60%; }
-  to { left: 140%; }
 }
 .hero-label { font-size: 13px; font-weight: 700; opacity: 0.85; }
 .hero-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px; }
@@ -482,8 +425,8 @@ input:focus-visible {
   bottom: 3px;
   left: 0;
   border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 4px 14px -2px rgba(91, 79, 232, 0.55);
+  background: var(--color-accent-hover);
+  box-shadow: 0 2px 8px var(--color-shadow);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, width;
 }
@@ -500,8 +443,9 @@ input:focus-visible {
 }
 .segmented--full button { flex: 1; text-align: center; }
 .segmented button.is-active {
-  color: var(--accent-ink);
+  color: #FFFFFF;
 }
+.segmented button:hover:not(.is-active) { color: var(--color-primary); }
 
 .route-label {
   font-size: 14px;
@@ -533,14 +477,15 @@ input:focus-visible {
   display: inline-block;
   padding: 11px 18px;
   border-radius: 999px;
-  background: var(--glass-bg-strong);
-  border: 1px solid var(--glass-border);
-  color: var(--ink);
+  background: var(--color-accent-hover);
+  border: 1px solid var(--color-accent-hover);
+  color: #FFFFFF;
   font-weight: 600;
   font-size: 14px;
   transition: transform 0.15s ease;
 }
 .btn-secondary:active { transform: scale(0.96); }
+.btn-secondary:hover { background: var(--color-accent-hover); color: #FFFFFF; }
 .btn-full { width: 100%; text-align: center; }
 
 /* ---------- Info card (Ustawienia) ---------- */
@@ -599,18 +544,9 @@ table.timetable td.is-empty { color: var(--ink-soft); opacity: 0.5; }
 table.timetable td.is-past { color: var(--ink-soft); opacity: 0.5; }
 table.timetable th.is-next,
 table.timetable td.is-next {
-  background: color-mix(in srgb, var(--accent) 24%, transparent);
+  background: var(--color-accent-soft);
+  color: var(--color-text);
   font-weight: 700;
-}
-table.timetable .layover-row td {
-  padding: 7px 12px;
-  color: var(--ink-soft);
-  background: color-mix(in srgb, var(--ink-soft) 10%, transparent);
-  border-bottom: 1px solid var(--hairline);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-align: center;
 }
 table.timetable tbody tr:last-child td,
 table.timetable tbody tr:last-child th { border-bottom: none; }
@@ -635,7 +571,7 @@ table.timetable tbody tr:last-child th { border-bottom: none; }
   bottom: 6px;
   left: 0;
   border-radius: 20px;
-  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  background: var(--color-accent-hover);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, width;
 }
@@ -656,12 +592,10 @@ table.timetable tbody tr:last-child th { border-bottom: none; }
   transition: color 0.25s ease, transform 0.15s ease;
 }
 .tabbar button svg { display: block; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
-.tabbar button.is-active { color: var(--accent); }
+.tabbar button.is-active { color: #FFFFFF; }
 .tabbar button.is-active svg { transform: translateY(-1px) scale(1.08); }
 
-
-/* Wspólny materiał szklany dla powtarzalnych komponentów: mocniejszy blur,
-   nasycenie i cienka smuga połysku na górnej krawędzi (jak realne szkło). */
+/* Jednolite, białe powierzchnie z lekkim cieniem; bez ciężkiego rozmywania. */
 .glass,
 .list,
 .info-card,
@@ -674,31 +608,25 @@ table.timetable tbody tr:last-child th { border-bottom: none; }
 .list-row--link {
   position: relative;
   background: var(--glass-bg);
-  backdrop-filter: blur(30px) saturate(200%);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-inset);
-}
-.glass::before,
-.list::before,
-.info-card::before,
-.banner::before,
-.segmented::before,
-.tabbar::before,
-.journey-chip::before,
-.list-row--link::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--glass-shine);
-  pointer-events: none;
-  z-index: -1;
 }
 .list, .info-card, .banner, .segmented, .tabbar, .journey-chip, .list-row--link { overflow: hidden; }
 .table-scroll { overflow-x: auto; overflow-y: hidden; }
 /* Wspólna reguła wyżej ustawia position:relative wszystkim, ale pasek
    nawigacji musi zostać position:fixed (pływający nad treścią) — przywracamy. */
 .tabbar { position: fixed; }
+.tabbar {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 18px var(--color-shadow);
+}
+.tabbar button { color: rgba(255, 255, 255, 0.78); }
+.tabbar button.is-active { color: #FFFFFF; }
+.tabbar-indicator { background: var(--color-accent-hover); }
 
 /* ---------- Toast Notifications ---------- */
 .toast {
@@ -719,6 +647,10 @@ table.timetable tbody tr:last-child th { border-bottom: none; }
   box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
   white-space: nowrap;
 }
+.toast.is-success { background: var(--color-success-soft); color: var(--color-success-ink); border: 1px solid var(--color-success); }
+.toast.is-error { background: var(--color-danger-soft); color: var(--color-danger); border: 1px solid var(--color-danger); }
+.banner.is-success { color: var(--color-success-ink); border-color: var(--color-success); }
+.banner.is-error { color: var(--color-danger); border-color: var(--color-danger); }
 .toast.is-visible {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
@@ -739,6 +671,5 @@ table.timetable tbody tr:last-child th { border-bottom: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
-  body::before, body::after { animation: none !important; }
   #view { opacity: 1 !important; }
 }
